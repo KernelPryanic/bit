@@ -1,3 +1,4 @@
+//go:build go1.10
 // +build go1.10
 
 // Package bit provides a bit array implementation.
@@ -72,6 +73,9 @@ func New(n ...int) *Set {
 	}
 	return s
 }
+
+// Resets the bitset without reallocation
+func (s *Set) Reset() { s.data = s.data[:0] }
 
 // Contains tells if n is an element of the set.
 func (s *Set) Contains(n int) bool {
